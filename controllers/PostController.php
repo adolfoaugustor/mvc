@@ -1,7 +1,7 @@
 <?php
 
-class HomeController {
-
+class PostController
+{
     public function index()
     {
         return __METHOD__;
