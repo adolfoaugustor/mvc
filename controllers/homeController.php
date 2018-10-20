@@ -2,20 +2,20 @@
 
 namespace controllers;
 
-class HomeController {
+class HomeController extends BaseController {
 
     public function index()
     {
-        return __METHOD__;
+        $this->view('site/index.php');
     }
 
     public function store()
     {
-        return __METHOD__;
+        $this->view('site/store.php');
     }
 
     public function update()
     {
-        return __METHOD__;
+        $this->view('site/update.php');
     }
 }

@@ -15,8 +15,23 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-//spl_autoload_call('');
+//$_GET['_c']
+//$_GET['_m']
 
-echo var_dump($_GET); exit;
+if (!isset($_GET['_c'])) {
 
-//include_once __DIR__.'/../routes/web.php';
+    die('missing controller parameter');
+}
+
+if (!isset($_GET['_m'])) {
+
+    die('missing method parameter');
+}
+
+$className = new ReflectionClass('controllers\\'.ucfirst($_GET['_c']).'Controller');
+$controller = new $className->name();
+$method = $_GET['_m'];
+
+unset($_GET['_c'], $_GET['_m']);
+
+echo $controller->$method();

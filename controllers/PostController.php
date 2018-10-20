@@ -2,20 +2,20 @@
 
 namespace controllers;
 
-class PostController
+class PostController extends BaseController
 {
     public function index()
     {
-        return __METHOD__;
+        $this->view('site/posts/index.php');
     }
 
     public function store()
     {
-        return __METHOD__;
+        $this->view('site/posts/store.php');
     }
 
     public function update()
     {
-        return __METHOD__;
+        $this->view('site/posts/update.php');
     }
 }

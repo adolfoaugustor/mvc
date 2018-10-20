@@ -2,10 +2,7 @@ RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.php [L]
+#RewriteRule ^ index.php [L]
 
-Redirect 404 /404
-Redirect 500 /500
-
-RewriteRule ^([a-z]+)\/?$ index.php?m=$1 [NC,L]
-RewriteRule ^([a-z]+)\/?([a-z]+)\/?$ index.php?c=$1&m=$2 [NC,L]
+#RewriteRule ^([a-z]+)\/?$ index.php?_m=$1 [NC,L]
+RewriteRule ^([a-z]+)\/?([a-z]+)\/?$ index.php?_c=$1&_m=$2 [NC,L]
