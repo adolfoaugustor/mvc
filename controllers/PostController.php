@@ -1,5 +1,7 @@
 <?php
 
+namespace controllers;
+
 class PostController
 {
     public function index()

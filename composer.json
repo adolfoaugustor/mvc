@@ -1,0 +1,10 @@
+{
+    "name": "walter/mvc-adolfo",
+    "authors": [
+        {
+            "name": "Walter Neto",
+            "email": "walter@csktech.com.br"
+        }
+    ],
+    "require": {}
+}
