@@ -20,18 +20,31 @@ error_reporting(E_ALL);
 
 if (!isset($_GET['_c'])) {
 
-    die('missing controller parameter');
+    die('missing first parameter');
 }
 
 if (!isset($_GET['_m'])) {
 
-    die('missing method parameter');
+    die('missing second parameter');
 }
 
-$className = new ReflectionClass('controllers\\'.ucfirst($_GET['_c']).'Controller');
-$controller = new $className->name();
-$method = $_GET['_m'];
+try {
 
-unset($_GET['_c'], $_GET['_m']);
+    $className = new ReflectionClass('controllers\\' . ucfirst($_GET['_c']) . 'Controller');
 
-echo $controller->$method();
+    $controller = new $className->name();
+    $method = $_GET['_m'];
+
+    unset($_GET['_c'], $_GET['_m']);
+
+    if (method_exists($controller, $method)) {
+
+        echo $controller->$method(); exit;
+    }
+
+} catch (Exception $e) {
+
+    die('error on first parameter');
+}
+
+echo 404; exit;

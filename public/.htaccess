@@ -5,4 +5,4 @@ RewriteCond %{REQUEST_FILENAME} !-f
 #RewriteRule ^ index.php [L]
 
 #RewriteRule ^([a-z]+)\/?$ index.php?_m=$1 [NC,L]
-RewriteRule ^([a-z]+)\/?([a-z]+)\/?$ index.php?_c=$1&_m=$2 [NC,L]
+RewriteRule ^([a-z]+)/([a-z]+)\/?$ index.php?_c=$1&_m=$2 [NC,L]
