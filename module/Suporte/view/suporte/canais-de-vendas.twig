@@ -1,0 +1,61 @@
+{%  extends 'templates/indexs/index.twig' %}
+
+
+{% block titulo_conteudo %}
+    <a class="fas fa-university"></a>
+    Canais de Vendas cadastrados
+{% endblock %}
+
+{% block conteudo %}
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-"></i> {{ titulo }}
+                </div>
+                <div class="card-body">
+                    <table class="dataTable table table-hover" id="ListarCanaisDeVenda">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>IDENTIFICADOR</th>
+                            <th>DATA DE ADESÃO</th>
+                            <th>ATIVO</th>
+                            <th>CHAVE DE ACESSO</th>
+                            <th class="nosort">AÇÕES</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block scripts %}
+    <script>
+        var $table = Datatables.carregarTabela({
+            id:'ListarCanaisDeVenda',
+            url:'/suporte/canal-de-venda/listar',
+            colunas:[
+                'ni',
+                'identificador',
+                'data_adesao',
+                'ativo',
+                'chave',
+                'acao'
+            ],
+            ordem:[0,'asc'],
+            buttons:[
+                'pdf','csv'
+            ]
+        });
+
+        $table.draw();
+
+        Crud.deletar('.acao-canal-de-venda-deletar',$table);
+    </script>
+{% endblock %}

@@ -1,1 +1,0 @@
-Home <?php echo $viewData['campany_name']; ?>

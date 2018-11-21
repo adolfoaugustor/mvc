@@ -1,0 +1,25 @@
+{%  extends 'templates/indexs/form-template-dashboard.twig' %}
+
+
+{% block titulo_conteudo %}
+    <a class="fa fa-list"></a>
+    Cadastro de Complemento do Endereço #{{ id_endereco }}
+{% endblock %}
+
+{% block conteudo %}
+        {{ parent() }}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var opcoes = {
+            messages:{
+                identificacao:{
+                    required:"Por favor coloque uma descrição"
+                }
+            }
+        };
+
+        Crud.Save("FormComplemento",null,opcoes);
+    </script>
+{% endblock %}

@@ -1,0 +1,44 @@
+{%  extends 'templates/indexs/form-template-dashboard.twig' %}
+
+
+{% block titulo_conteudo %}
+    <a class="fa fa-list"></a>
+    Cadastro de Servições
+{% endblock %}
+
+{% block conteudo %}
+        {{ parent() }}
+{% endblock %}
+
+{% block scripts %}
+        <script>
+            var opcoes ={
+                rules:{
+                    descricao: {
+                        required:true,
+                        validarNome: true
+                    },
+                    sigla:{
+                        uppercase:true,
+                    },
+                    tabelaDados: {
+                       required:true
+                    }
+                },
+                messages:{
+                    descricao: {
+                        validarNome: "Por favor coloque um nome de serviço válido",
+                        required:"Por favor coloque um nome de um serviço"
+                    },
+                    sigla:{
+                      uppercase:"A sigla pode ter somente letras em caixa alta"
+                    },
+                    tabela_dados:{
+                        validarNome:"Por favor coloque um nome da tabela correto"
+                    }
+                }
+            };
+           Crud.Save('FormServico',null,opcoes);
+           Crud.Save('FormUpdateServico',null,opcoes);
+        </script>
+{% endblock %}

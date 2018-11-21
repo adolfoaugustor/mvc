@@ -1,0 +1,18 @@
+{%  extends 'templates/indexs/form-template-dashboard.twig' %}
+
+
+{% block titulo_conteudo %}
+    <a class="fa fa-dollar-sign"></a>
+   Tarifas Bancárias
+{% endblock %}
+
+{% block conteudo %}
+
+        {{ parent() }}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+      Crud.Save($('form').attr('id'),null,null);
+    </script>
+{% endblock %}

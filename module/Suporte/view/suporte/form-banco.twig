@@ -1,0 +1,39 @@
+{%  extends 'templates/indexs/form-template-dashboard.twig' %}
+
+
+{% block titulo_conteudo %}
+    <a class="fa fa-university"></a>
+    Cadastro de Instituições Bancárias
+{% endblock %}
+
+{% block conteudo %}
+
+        {{ parent() }}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var options = {
+            rules:{
+                niBanco:{
+                    required:true,
+                    validarCpfCnpj:true
+                },
+                nome:{
+                    required:true,
+                    validarNome:true
+                },
+                codigo:{
+                    required:true,
+                    number:true
+                }
+            },
+            messages:{
+                niBanco:{
+                    required:"Este documento é requerido"
+                }
+            },
+        };
+     Crud.Save(jQuery('form').attr('id'),null,options);
+    </script>
+{% endblock %}

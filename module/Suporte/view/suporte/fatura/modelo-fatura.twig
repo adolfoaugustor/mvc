@@ -1,0 +1,92 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('plugins/bootstrap4/dist/css/bootstrap.min.css') }}">
+</head>
+<body>
+    <table border="0" class="table">
+
+        <tr>
+            <td style="border-top: 0 !important;">
+                <figure>
+                    <img src="{{ asset('img/central-logo.png') }}" width="200">
+                </figure>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="border: 1px solid #000 !important; font-size: 10px;">
+                <p class="font-italic">Cadastro do cliente</p>
+                <p><strong>Nome: </strong> {{ clienteFaturado.ni.getNome() }}</p>
+                <p><strong>Data adesão: </strong> {{ clienteFaturado.getDataAdesao()|date("d/m/Y \\à\\s\\ H:i:s") }}</p>
+                <p><strong>Número da fatura: </strong> 7987987987</p>
+            </td>
+
+            <td class="text-center" style="border: 1px solid #000 !important;">
+                <p style="font-size: 10px !important;">Data da Geração: <br>{{ "now"|date("d/m/Y \\à\\s\\ H:i:s") }}</p>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <table border="1" style="border: 0 solid #000;" width="100%">
+        <tr>
+            <td style="border-radius: 10px 0 10px 0; padding: 10px;">
+                <h5 style="background-color: #063346; color: #FFF; padding: 5px;">Lista de Pedidos: </h5>
+                <hr>
+                {% set valorParaPagamento = 0 %}
+                {% for i in pedidosItens %}
+                    <div style=" width:500px; height: 20px; float: left;">
+                        <p>Pedido({{ i['pedidoId'] }}) Item ({{ i['id'] }}) <span style="font-size: 14px;">{{ i['descricao'] }}</span></p>
+                    </div>
+                    <div style="width:150px; height: 20px; float: left; text-align: right">
+                        <p>R$: {{ i['valor'] }}</p>
+                    </div>
+                    <br>
+                    {% set valorParaPagamento = valorParaPagamento + i['valor']|number_format %}
+                {% endfor %}
+                {############################## CUSTO ADICIONAL PEDIDOS###########################################}
+                <br>
+                <h5 style="background-color: #063346; color: #FFF; padding: 5px;">Custo Adicional pedidos:</h5>
+                <hr>
+                {% for y in custaPedido %}
+                    <div style=" width:500px; height: 20px; float: left;">
+                        <p>Custa Id({{ y['id'] }}) <span style="font-size: 12px;">{{ y['descricao'] }}</span></p>
+                    </div>
+                    <div style="width:150px; height: 20px; float: left; text-align: right">
+                        <p>R$: {{ y['valor']|number_format(2, '.', ',') }}</p>
+                    </div>
+                    <br>
+                    {% set valorParaPagamento = valorParaPagamento + y['valor']|number_format %}
+                {% endfor %}
+                {#############################  CUSTO ADICIONAL PEDIDOS INTENS ###################################}
+                <br>
+                <h5 style="background-color: #063346; color: #FFF; padding: 5px;">Custo Adicional pedidos itens:</h5>
+                <hr>
+                {% for y in custaPedidoItens %}
+                    <div style=" width:500px; height: 20px; float: left;">
+                        <p>Custa Id({{ y['id'] }}) <span style="font-size: 12px;">{{ y['descricao'] }}</span></p>
+                    </div>
+                    <div style="width:150px; height: 20px; float: left; text-align: right">
+                        <p>R$: {{ y['valor']|number_format(2, '.', ',') }}</p>
+                    </div>
+                    <br>
+                    {% set valorParaPagamento = valorParaPagamento + y['valor']|number_format %}
+                {% endfor %}
+                <br><br>
+                <hr>
+                <div style=" width: 500px; height: 20px; float: left;">
+                    <p>
+                        <strong style="font-size: 14px;">Total a pagar: </strong>
+                    </p>
+                </div>
+                <div style="width:150px; height: 20px; float: left; text-align: right">
+                    <p><span style="font-size: 25px; color: #CC0000;">R$: {{ valorParaPagamento|number_format(2, '.', ',') }}</span></p>
+                </div>
+                <br><br>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

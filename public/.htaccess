@@ -1,0 +1,5 @@
+RewriteEngine On
+Allow from all
+DirectoryIndex index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule (.+) index.php/$1 [L,QSA]

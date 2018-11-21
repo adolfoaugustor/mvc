@@ -1,0 +1,34 @@
+{%  extends 'dashboard/template/form-template-dashboard.twig' %}
+
+
+{% block titulo_conteudo %}
+    <a class="fa fa-users"></a>
+    Formulário de Taxas de Conveniência
+{% endblock %}
+
+{% block erros %}
+
+{% endblock %}
+
+{% block conteudo %}
+
+        {{ parent() }}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        let options = {
+            rules:{
+                descricao:{
+                    validarNome:true
+                }
+            },
+            messages:{
+                descricao: {
+                    validarNome: "O campo descrição contém caracteres não permitidos"
+                }
+            }
+        }
+        Form.validate($("form"),options)
+    </script>
+{% endblock %}

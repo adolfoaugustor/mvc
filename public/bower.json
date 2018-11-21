@@ -1,0 +1,40 @@
+{
+  "name": "centralrtdbrasil",
+  "version": "1.0",
+  "authors": [
+    "Equipe RTDBrasil <ti@rtdbrasil.org.br>"
+  ],
+  "description": "Inicio do projeto",
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "install": "dist",
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "bootstrap4": "bootstrap#^4.1.3",
+    "components-font-awesome": "*",
+    "sweetalert2": "^7.26.11",
+    "animate.css": "animate-css#^3.7.0",
+    "popper.js": "^1.14.4",
+    "select2": "~4.0",
+    "jszip": "^3.1.5",
+    "pdfmake": "^0.1.38",
+    "datatables.net-bs4": "^3.2.2",
+    "datatables.net-autofill-bs4": "^2.3.1",
+    "datatables.net-buttons-bs4": "^1.5.3",
+    "datatables.net-responsive-bs4": "^2.2.3",
+    "datatables.net-scroller-bs4": "^1.5.1",
+    "datatables.net-select-bs4": "^1.2.7",
+    "jquery-mask-plugin": "^1.14.15",
+    "jquery-validation": "^1.18.0"
+  }
+}

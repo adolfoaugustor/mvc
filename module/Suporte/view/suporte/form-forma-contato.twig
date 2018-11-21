@@ -1,0 +1,33 @@
+{%  extends 'templates/indexs/form-template-dashboard.twig' %}
+
+
+{% block titulo_conteudo %}
+    <a class="fa fa-bookmark"></a>
+    Forma de Contato
+{% endblock %}
+
+{% block conteudo %}
+        {{ parent() }}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var opcoes = {
+          rules:{
+              ni:{
+                  required:true
+              }
+          },
+            messages:{
+              ni:{
+                  required:"Selecione uma pessoa para vincular o contato!"
+              },
+              identificador:{
+                  required:"Por favor coloque o identificador referente ao tipo"
+              }
+            }
+        };
+        Crud.Save('FormUpdateFormaContato',null,opcoes);
+        Crud.Save('FormFormaContato',null,opcoes);
+    </script>
+{% endblock %}

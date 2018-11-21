@@ -1,0 +1,240 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-31 11:03-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /var/www/html/rtdbrasil/index.php:46 /var/www/html/rtdbrasil/index.php:44
+msgid "Titulos e Documentos"
+msgstr "Balcão Eletrônico Títulos e Documentos"
+
+#: /var/www/html/rtdbrasil/index.php:133 /var/www/html/rtdbrasil/index.php:131
+msgid "Pessoa Júridica"
+msgstr "Balcão Eletrônico Pessoa Jurídica"
+
+#: /var/www/html/rtdbrasil/index.php:142 /var/www/html/rtdbrasil/index.php:139
+msgid "Inscrição, Alteração e Baixa"
+msgstr "CNPJ - Inscrição, alteração e baixa (REDESIM)"
+
+#: /var/www/html/rtdbrasil/clientes/index.php:200
+msgid "Nova Solicitação"
+msgstr "Balcão Eletrônico"
+
+#: /var/www/html/rtdbrasil/clientes/index.php:204
+#: /var/www/html/rtdbrasil/clientes/index.php:213
+msgid "Pesquisar"
+msgstr "Acompanhamento Registral"
+
+#: /var/www/html/rtdbrasil/clientes/index.php:207
+#: /var/www/html/rtdbrasil/clientes/index.php:215
+msgid "Exportar"
+msgstr "Exportar"
+
+#: /var/www/html/rtdbrasil/clientes/redesim_seleciona_eventos.php:45
+msgid "Inscrição"
+msgstr "Inscrição"
+
+#: /var/www/html/rtdbrasil/clientes/redesim_seleciona_eventos.php:46
+msgid "Alteração"
+msgstr "Alteração"
+
+#: /var/www/html/rtdbrasil/clientes/redesim_seleciona_eventos.php:47
+msgid "Relativo à Baixa"
+msgstr "Relativo à Baixa"
+
+#: /var/www/html/rtdbrasil/clientes/controles/novos_servicos.php:8
+#: /var/www/html/rtdbrasil/clientes/controles/novos_servicos.php:24
+msgid "../templates/irtd5/images/servicos/bd.png"
+msgstr "../templates/irtd5/images/servicos/busca_MG.png"
+
+#: /var/www/html/rtdbrasil/clientes/controles/novos_servicos.php:11
+#: /var/www/html/rtdbrasil/clientes/controles/novos_servicos.php:25
+msgid "../templates/irtd5/images/servicos/cr.png"
+msgstr "../templates/irtd5/images/servicos/certidao_MG.png"
+
+#: /var/www/html/rtdbrasil/servico.php:29
+#: /var/www/html/rtdbrasil/servico.php:46
+msgid "block"
+msgstr "none"
+
+#: /var/www/html/rtdbrasil/servico_redesim.php:59
+msgid "Verificar Disponibilidade de Nome"
+msgstr "Consulta Prévia"
+
+#: /var/www/html/rtdbrasil/servico_redesim.php:60
+msgid "140px;"
+msgstr "180px;"
+
+#: /var/www/html/rtdbrasil/servico_redesim.php:60
+msgid ""
+"É o primeiro passo para criação de sua sociedade. Já escolheu a razão social "
+"de sua empresa? Verifique aqui se o nome que escolheu está disponível ou já "
+"está sendo usado por outra sociedade. Previna-se!"
+msgstr ""
+"É o primeiro passo para criação de sua sociedade. Já escolheu a razão social "
+"de sua empresa? Verifique aqui se o nome que escolheu está disponível ou já "
+"está sendo usado por outra sociedade, consulte a viabilidade do endereço. <a "
+"target='_blank' href=\"http://www.redesim.mg.gov.br\"> Aqui </a> você também "
+"consulta e cancela um protocolo de viabilidade já inciado."
+
+#: /var/www/html/rtdbrasil/servico_redesim.php:70
+msgid "Inscrição de CNPJ"
+msgstr "Inscrição de CNPJ"
+
+#: /var/www/html/rtdbrasil/servico_redesim.php:71
+msgid " "
+msgstr "height: 180px;"
+
+#: /var/www/html/rtdbrasil/servico_redesim.php:71
+msgid ""
+"Inicie aqui o processo de criação de sua sociedade. Você emitirá "
+"eletronicamente o seu CNPJ e acompanhará digitalmente seu processo. "
+"Lembramos que nos casos de inscrição e alteração de nome deve ter sido "
+"realizado uma verificação de disponibilidade de nome."
+msgstr ""
+"Inicie aqui o processo de criação de sua sociedade. Você preencherá a FCPJ "
+"(Ficha Cadastral da Pessoa Jurídica), que deverá ser preenchida por meio do "
+"Aplicativo de <a target='_blank'href=\"https://www38.receita.fazenda.gov.br/"
+"redesim\"> Coletor Nacional</a> diretamente no sítio da Secretaria da "
+"Receita Federal do Brasil (RFB), <a target='_blank' href=\"http://www."
+"receita.fazenda.gov.br\"> http://www.receita.fazenda.gov.br</a> Este "
+"documento deverá ser encaminhado ao Cartório de Registro Civil das Pessoas "
+"Jurídicas do local do estabelecimento, juntamente com o ato constitutivo da "
+"pessoas jurídica para ser registrado. "
+
+#: /var/www/html/rtdbrasil/servico_redesim.php:93
+msgid "Alteração de CNPJ"
+msgstr "Alteração de CNPJ"
+
+#: /var/www/html/rtdbrasil/servico_redesim.php:94
+msgid ""
+"Inicie aqui o processo de alteração de sua sociedade. Você conseguirá "
+"alterar eletronicamente o seu CNPJ e acompanhará digitalmente seu processo."
+msgstr ""
+"Inicie aqui o processo de alteração de sua sociedade. Antes de encaminhar a "
+"alteração do ato constitutivo da sua pessoa jurídica ao cartório competente, "
+"você deve preencher a FCPJ (Ficha Cadastral da Pessoa Jurídica), por meio do "
+"Aplicativo de <a target='_blank' href=\"https://www38.receita.fazenda.gov.br/"
+"redesim\">Coletor Nacional</a>diretamente no sítio da Secretaria da Receita "
+"Federal do Brasil (RFB), <a target='_blank' href=\"http://www.receita."
+"fazenda.gov.br\"> http://www.receita.fazenda.gov.br.</a>Se a alteração for "
+"de nome e/ou endereço, há necessidade de<a target='_blank' href=\"http://www."
+"redesim.mg.gov.br\"> CONSULTA DE VIABILIDADE</a> "
+
+#: /var/www/html/rtdbrasil/servico_redesim.php:104
+msgid "Baixa de CNPJ"
+msgstr "Baixa de CNPJ"
+
+#: /var/www/html/rtdbrasil/servico_redesim.php:105
+msgid ""
+"Inicie aqui o processo de baixa de sua sociedade. Você conseguirá dar baixar "
+"eletronicamente no seu CNPJ e acompanhará digitalmente seu processo."
+msgstr ""
+"Inicie aqui o processo de baixa de sua sociedade. Antes de encaminhar a "
+"alteração do ato constitutivo da sua pessoa jurídica ao cartório competente, "
+"você deve preencher a FCPJ (Ficha Cadastral da Pessoa Jurídica), por meio do "
+"Aplicativo de <a target='_blank' href=\"https://www38.receita.fazenda.gov.br/"
+"redesim\"> Coletor Nacional</a> diretamente no sítio da Secretaria da "
+"Receita Federal do Brasil (RFB),<a target='_blank' href=\"http://www.receita."
+"fazenda.gov.br\">http://www.receita.fazenda.gov.br</a>"
+
+#: /var/www/html/rtdbrasil/servico_certidao.php:11
+msgid "Certidão de Documentos (2ª Via)"
+msgstr "Certidão Eletrônica "
+
+#: /var/www/html/rtdbrasil/servico_certidao.php:19
+msgid ""
+"Consulte aqui a autenticidade da certidão solicitada por meio da Central "
+"RTDPJBrasil"
+msgstr ""
+"Consulte aqui a autenticidade da certidão eletrônica solicitada por meio da "
+"Central RTDPJBrasil "
+
+#: /var/www/html/rtdbrasil/servico_certidao.php:23
+msgid "Acompanhe sua Certidão "
+msgstr "Acompanhe sua Certidão Eletrônica "
+
+#: /var/www/html/rtdbrasil/servico_certidao.php:25
+msgid ""
+"Acompanhe o andamento de sua certidão solicitada através da Central "
+"RTDPJBrasil."
+msgstr ""
+"Acompanhe o andamento de sua certidão eletrônica solicitada através da "
+"Central RTDPJBrasil. "
+
+#: /var/www/html/rtdbrasil/servico_certidao.php:30
+msgid ""
+"Acompanhe a legislação atualizada sobre certidões 2ª via nos Cartórios do "
+"Brasil"
+msgstr ""
+"Acompanhe a legislação atualizada sobre certidões eletrônica nos Cartórios "
+"do Brasil "
+
+#: /var/www/html/rtdbrasil/servico_certidao.php:35
+msgid ""
+"As dúvidas mais comuns e perguntas mais frequentes sobre certidões de "
+"documentos."
+msgstr ""
+"As dúvidas mais comuns e perguntas mais frequentes sobre certidões "
+"eletrônica de documentos. "
+
+#: /var/www/html/rtdbrasil/servico_certidao.php:41
+msgid ""
+"Acesse as cartilhas e manuais que embasam a utilização da função de "
+"Certidões na Central RTDPJBrasil."
+msgstr ""
+"Acesse as cartilhas e manuais que embasam a utilização da função de "
+"Certidões Eletrônicas na Central RTDPJBrasil. "
+
+#: /var/www/html/rtdbrasil/servico_certidao.php:56
+msgid "Pedido de Certidão"
+msgstr "Pedido de Certidão Eletrônica "
+
+#: /var/www/html/rtdbrasil/servico_certidao.php:58
+msgid ""
+"Se você sabe em que cartório esta seu documento, solicite a sua 2ª Via ou "
+"Certidão!"
+msgstr ""
+"Se você sabe em que cartório esta seu documento, solicite a sua 2ª Via ou "
+"Certidão Eletrônica! "
+
+#: /var/www/html/rtdbrasil/clientes/controles/header.php:236
+#: /var/www/html/rtdbrasil/clientes/controles/header.php:247
+msgid "Certidão"
+msgstr "Certidão Eletrônica"
+
+#: /var/www/html/rtdbrasil/clientes/index.php:205
+#: /var/www/html/rtdbrasil/clientes/index.php:208
+msgid "none"
+msgstr "block"
+
+#: /var/www/html/rtdbrasil/index.php:110 /var/www/html/rtdbrasil/index.php:151
+msgid "Certidões"
+msgstr "Certidões Eletrônica "
+
+#: /var/www/html/rtdbrasil/index.php:112
+msgid ""
+"Sabendo o cartório, solicite uma certidão ou 2ª. Via de documento registrado."
+msgstr ""
+"Sabendo o cartório, solicite uma certidão eletrônica ou 2ª. Via de documento registrado."
+
+#: /var/www/html/rtdbrasil/index.php:153
+msgid ""
+"Solicite uma certidão de documentos de sua sociedade registrados em um "
+"cartório."
+msgstr ""
+"Solicite uma certidão eletrônica de documentos de sua sociedade registrados em um "
+"cartório."

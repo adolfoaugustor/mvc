@@ -1,0 +1,41 @@
+{%  extends 'templates/indexs/form-template-dashboard.twig' %}
+
+
+{% block titulo_conteudo %}
+    <a class="fa fa-bullhorn"></a>
+    Cadastrar um novo Canal de Vendas
+{% endblock %}
+
+{% block conteudo %}
+
+        {{ parent() }}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var options = {
+
+            rules:{
+
+                ni:{
+                    required:true,
+                    cpfBR:true,
+                },
+                identificador:{
+                    required:true
+                },
+                dataAdesao:{
+                    required:true,
+                }
+
+            },
+            messages:{
+                niBanco:{
+                    required:"Selecione as instituições referentes"
+                }
+            },
+        };
+
+        Crud.Save('FormCanaisDeVenda',null,options);
+    </script>
+{% endblock %}

@@ -1,0 +1,36 @@
+{%  extends 'templates/indexs/form-template-dashboard.twig' %}
+
+
+{% block titulo_conteudo %}
+    <a class="fa fa-users"></a>
+    Cadastro de Pessoa Jurídica
+{% endblock %}
+
+{% block conteudo %}
+        {{ parent() }}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var opcoes = {
+            rules:{
+                ni:{
+                  validarCpfCnpj:true
+                },
+            },
+            messages:{
+                nacionalidade_capital:{
+                    required:"Por favor selecione uma nacionalidade"
+                },
+                pais:{
+                    required:"Por favor selecione um país"
+                },
+                participacao_capital:{
+                    required:"Por favor coloque o valor da sua participação de capital"
+                }
+
+            }
+        }
+        Crud.Save('FormPessoaJuridica',null,opcoes);
+    </script>
+{% endblock %}

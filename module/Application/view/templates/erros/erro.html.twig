@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Central RTDBrasil - Erro {{ response.statusCode }}</title>
+    <link href="/plugins/bootstrap4/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/plugins/components-font-awesome/css/fontawesome-all.min.css" rel="stylesheet"/>
+    <link href="/src/css/app.css" rel="stylesheet"/>
+</head>
+<body>
+<section class="container">
+    <div class="row align-content-center m-5">
+        <div class="col ">
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        <i class="fa text-primary fa-exclamation-circle"></i>
+                        Erro {{ response.statusCode }}
+                    </h2>
+
+                </div>
+                <div class="card-body">
+                    <div id="mensagem">
+                        {% block mensagem %}
+                        {% endblock %}
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="http://www.rtdbrasil.com.br/" class="btn btn-primary"><i class="fa fa-angle-left"></i> Voltar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

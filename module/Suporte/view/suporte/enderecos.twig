@@ -1,0 +1,82 @@
+{%  extends 'templates/indexs/index.twig' %}
+
+
+{% block titulo_conteudo %}
+    <a class="fa fa-users"></a>
+     Lista de Enderecos da pessoa {{ nome }}
+{% endblock %}
+
+{% block conteudo %}
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-list"></i> {{ titulo_pagina }}
+                </div>
+                <div class="card-body">
+                   <div class="table-responsive-xl">
+                  <table class="dataTable table table-hover" id="listarEnderecos" data-ni="{{ ni }}">
+                      <thead>
+                          <tr>
+                              <th>ID</th>
+                              <th>LOGRADOURO</th>
+                              <th>NÚMERO</th>
+                              <th>BAIRRO</th>
+                              <th>CIDADE</th>
+                              <th>ESTADO</th>
+                              <th>ATIVO</th>
+                              <th class="nosort">Ações</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+
+                      </tbody>
+                  </table>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block scripts %}
+    <script>
+
+
+        var ni = $('#listarEnderecos').data('ni');
+        var url = "";
+
+        if(ni !== ''){
+            url = '/suporte/pessoa/enderecos/ni/por-nome/'+ni
+        }else{
+            url = '/suporte/pessoa/enderecos/listar'
+        }
+
+        console.log(url);
+
+      var $table = Datatables.carregarTabela({
+          id:'listarEnderecos',
+          url:url,
+          colunas:[
+             'id_endereco',
+             'nome',
+             'numero',
+             'bairro',
+             'desc_cidade',
+             'desc_estado',
+             'endereco_ativo',
+             'acao'
+          ],
+          ordem:[1,'desc'],
+          buttons:[
+              'pdf','csv'
+          ]
+
+      });
+
+      $table.draw();
+
+      Crud.deletar('.acao-excluir-endereco',$table);
+
+    </script>
+{% endblock %}

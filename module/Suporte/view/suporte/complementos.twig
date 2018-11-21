@@ -1,0 +1,84 @@
+{%  extends 'templates/indexs/index.twig' %}
+
+
+{% block titulo_conteudo %}
+    <a class="fa fa-users"></a>
+     Lista de pessoas cadastradas no sistema
+{% endblock %}
+
+{% block conteudo %}
+
+
+    {% include 'templates/indexs/form.twig' %}
+
+    <div class="row">
+        <div class="col mt-4">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-"></i>  Complementos cadastrados
+                </div>
+                <div class="card-body">
+                  <table class="dataTable table table-hover" id="listarComplementoEnderecos" data-ni="{{ ni }}">
+                      <thead>
+                          <tr>
+                              <th>ID</th>
+                              <th>Tipo</th>
+                              <th>Identificacao</th>
+                              <th class="nosort">Ações</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+
+                      </tbody>
+                  </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block scripts %}
+    <script>
+
+
+        var ni = $('#listarComplementoEnderecos').data('ni');
+
+        var url = "";
+
+        if(ni !== ''){
+            url ='/suporte/pessoa/listar/enderecos/'+ni+'/complementos';
+        }else{
+            url = '/suporte/pessoa/listar/enderecos/complementos'
+        }
+
+      var $table = Datatables.carregarTabela({
+
+          id:'listarComplementoEnderecos',
+          url:url,
+          colunas:[
+             'id',
+             'tipo',
+             'identificacao',
+             'acao'
+          ],
+          ordem:[1,'desc'],
+          buttons:[
+              'pdf','csv'
+          ]
+
+      });
+
+
+        var opcoes = {
+            messages:{
+                identificacao:{
+                    required:"Por favor coloque uma descrição"
+                }
+            }
+        }
+      Crud.Save('FormComplemento',$table,opcoes);
+      Crud.deletar('.acao-complemento-excluir',$table);
+
+      $table.draw();
+    </script>
+{% endblock %}

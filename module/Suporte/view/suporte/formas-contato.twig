@@ -1,0 +1,97 @@
+{%  extends 'templates/indexs/index.twig' %}
+
+
+{% block titulo_conteudo %}
+    <a class="fa fa-users"></a>
+    Listas de Contatos da pessoa {{ pessoa }}
+{% endblock %}
+
+{% block conteudo %}
+
+    {% include 'templates/indexs/form.twig' %}
+
+
+
+
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-user"></i> {{ usuario }}
+                </div>
+                <div class="card-header">
+                    <i class="fa fa-list"></i> Listas de contato
+                </div>
+                <div class="card-body">
+                  <table class="dataTable table table-hover" id="listarFormasContato" data-ni="{{ ni }}">
+                      <thead>
+                          <tr>
+                              <th>Id</th>
+                              <th>Tipo de Documento</th>
+                              <th>Documento</th>
+                              <th>Ni</th>
+                              <th class="nosort">Ações</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+
+                      </tbody>
+                  </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block scripts %}
+    <script>
+
+       /// pega o valor do ID pessoa
+      var $ni = $('#listarFormasContato').data('ni');
+
+      var $table = Datatables.carregarTabela({
+          id:'listarFormasContato',
+          url:'/suporte/pessoa/listar/forma-contato/ni/'+$ni,
+          colunas:[
+              'id',
+              'tipo',
+              'identificador',
+              'ni',
+              'acao'
+          ],
+          ordem:[1,'desc'],
+          buttons:[
+              'pdf','csv'
+          ],
+          aoColumnDefs:[
+              {
+                  "targets": [ 3 ],
+                  "visible": false
+              }
+          ]
+      });
+
+      $table.draw();
+
+      Crud.deletar('.acao-forma-contato-excluir',$table);
+
+       var opcoes = {
+           rules:{
+               ni:{
+                   required:true
+               }
+           },
+           messages:{
+               ni:{
+                   required:"Selecione uma pessoa para vincular o contato!"
+               },
+               identificador:{
+                   required:"Por favor coloque o identificador referente ao tipo"
+               }
+           }
+       };
+
+       Crud.Save('FormUpdateFormaContato',opcoes,$table);
+
+    </script>
+{% endblock %}

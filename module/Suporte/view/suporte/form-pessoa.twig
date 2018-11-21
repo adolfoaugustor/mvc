@@ -1,0 +1,38 @@
+{%  extends 'templates/indexs/form-template-dashboard.twig' %}
+
+
+{% block titulo_conteudo %}
+    <a class="fa fa-users"></a>
+    Cadastro de Pessoas
+{% endblock %}
+
+{% block conteudo %}
+        {{ parent() }}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var options = {
+            rules:{
+                ni:{
+                    required:true,
+                    validarCpfCnpj:true
+                },
+                nome:{
+                    required:true,
+                    validarNome:true
+                },
+                nome_usual:{
+                    required:true,
+                    validarNome:true
+                }
+            },
+            messages:{
+                ni:{
+                    required:"Este cpf é requerido"
+                }
+            },
+        };
+      Form.validate($('form'),options);
+    </script>
+{% endblock %}

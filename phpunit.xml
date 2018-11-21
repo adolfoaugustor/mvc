@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit colors="true" bootstrap="vendor/autoload.php">
+    <php>
+        <!--Variáveis de Ambiente-->
+        <env name="SISTEMA_ENV" value="test"/>
+        <env name="DB_HOST" value="192.168.1.119"/>
+        <env name="DB_USER" value="postgres"/>
+        <env name="DB_PASS" value="RtDeV#2903"/>
+        <env name="DB_NAME" value="central_irtdpjbr"/>
+        <env name="DB_PORT" value="5432"/>
+        <env name="BEANSTALK_SERVER" value="192.168.1.119"/>
+        <env name="BEANSTALK_PORT" value="11300"/>
+        <env name="MAIL_HOST" value="mail.rtdbrasil.org.br"/>
+        <env name="MAIL_USER" value="suporte@rtdbrasil.org.br"/>
+        <env name="MAIL_PASS" value="Suportertd#"/>
+
+        <!--Constantes-->
+        <const name="DIR_FILES" value="/mnt/php_nodejs/irtd_dev/"/>
+    </php>
+    <testsuites>
+        <testsuite name="ModuloSuporte">
+            <directory>./module/Suporte/tests/ModuloFinanceiro01</directory>
+            <directory>./module/Suporte/tests/ModuloFinanceiro03</directory>
+        </testsuite>
+        <testsuite name="ModuloFinanceiro">
+            <directory>./module/Financeiro/tests/ModuloFinanceiro02/</directory>
+            <directory>./module/Financeiro/tests/ModuloFinanceiro06/</directory>
+            <directory>./module/Financeiro/tests/ModuloFinanceiro05/</directory>
+            <directory>./module/Financeiro/tests/ModuloFinanceiro04/</directory>
+        </testsuite>
+        <testsuite name="ModuloMeioPagamento">
+            <directory>./module/MeioPagamento/tests/MeioPagamento/</directory>
+        </testsuite>
+        <testsuite name="ModuloCliente">
+            <directory>./module/Clientes/tests/NovaCentral01/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

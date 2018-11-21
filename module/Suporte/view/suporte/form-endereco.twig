@@ -1,0 +1,58 @@
+{%  extends 'templates/indexs/form-template-dashboard.twig' %}
+
+
+{% block titulo_conteudo %}
+    <a class="fa fa-users"></a>
+    Cadastro de Endereço
+{% endblock %}
+
+{% block conteudo %}
+        {{ parent() }}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var opcoes = {
+            rules:{
+                ni:{
+                    required:true,
+                    validarCpfCnpj:true
+                },
+                nome:{
+                    required:true,
+                    validarNome:true
+                },
+                numero:{
+                    alphanumeric:true
+                },
+                bairro:{
+                    validarNome:true
+                },
+                tipo:{
+                    validarNome:true
+                }
+            },
+            messages:{
+                ni:{
+                    required:"Pessoa é obrigatória para víncular o endereço"
+                },
+                nome:{
+                    validarNome:"O campo Logradouro possui caracteres inválidos"
+                },
+                numero:{
+                    alphanumeric:"O campo numero so aceita numero e letras, caso nao tenha numero coloque SN"
+                },
+                bairro:{
+                    validarNome:"O campo Bairro não aceita caractérs inválidos"
+                },
+                tipo:{
+                    validarNome:"O campo tipo não aceita caracteres inválidos"
+                }
+            },
+        };
+
+        Crud.Save('FormUpdateEndereco',null,opcoes);
+        Crud.Save('FormEndereco',null,opcoes);
+
+    </script>
+{% endblock %}

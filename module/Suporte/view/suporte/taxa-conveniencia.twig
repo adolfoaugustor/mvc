@@ -1,0 +1,61 @@
+{%  extends 'templates/indexs/index.twig' %}
+
+
+{% block titulo_conteudo %}
+    <a class="fa fa-users"></a>
+     Lista de Taxas de Conveniência cadastradas no sistema
+{% endblock %}
+
+{% block conteudo %}
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-"></i> {{ titulo }}
+                </div>
+                <div class="card-body">
+                  <table class="dataTable table table-hover" id="listarTaxas">
+                      <thead>
+                          <tr>
+                              <th>ID</th>
+                              <th>DESCRICAO</th>
+                              <th>PERCENTUAL</th>
+                              <th class="nosort">Ações</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+
+                      </tbody>
+                  </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block scripts %}
+    <script>
+      var $table = Datatables.carregarTabela({
+          id:'listarTaxas',
+          url:'/suporte/taxa-conveniencia/listar',
+          colunas:[
+              'id',
+              'descricao',
+              'percentual',
+              'acao'
+          ],
+          ordem:[1,'desc'],
+          buttons:[
+              'pdf','csv'
+          ]
+
+      });
+
+      $table.draw();
+
+      Crud.deletar('.acao-taxa-conveniencia-excluir ',$table);
+
+      $table.draw();
+
+    </script>
+{% endblock %}

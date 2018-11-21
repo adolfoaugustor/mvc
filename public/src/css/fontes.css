@@ -1,0 +1,9 @@
+@font-face{font-family:'yanone';src:url('../fontes/yanonekaffeesatz-regular-webfont.eot');src:url('../fontes/yanonekaffeesatz-regular-webfont.eot?#iefix') format('embedded-opentype'),
+url('../fontes/yanonekaffeesatz-regular-webfont.woff') format('woff'),
+url('../fontes/yanonekaffeesatz-regular-webfont.ttf') format('truetype');font-weight:normal;font-style:normal;}
+@font-face{font-family:'yanonelight';src:url('../fontes/yanonekaffeesatz-light-webfont.eot');src:url('../fontes/yanonekaffeesatz-light-webfont.eot?#iefix') format('embedded-opentype'),
+url('../fontes/yanonekaffeesatz-light-webfont.woff') format('woff'),
+url('../fontes/yanonekaffeesatz-light-webfont.ttf') format('truetype');font-weight:normal;font-style:normal;}
+@font-face{font-family:'yanoneextralight';src:url('../fontes/yanonekaffeesatz-extralight-webfont.eot');src:url('../fontes/yanonekaffeesatz-extralight-webfont.eot?#iefix') format('embedded-opentype'),
+url('../fontes/yanonekaffeesatz-extralight-webfont.woff') format('woff'),
+url('../fontes/yanonekaffeesatz-extralight-webfont.ttf') format('truetype');font-weight:normal;font-style:normal;}

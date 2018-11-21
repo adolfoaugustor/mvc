@@ -1,0 +1,19 @@
+<div class="alert alert-danger">
+    <i class="fa fa-window-close" data-dismiss="alert"></i>
+
+    {%  if erros is iterable %}
+
+            {% for erro in erros %}
+                {% if erros.message %}
+                <p> {{ erro.message }}</p>
+                    {% else %}
+                        <p> {{ erro }}</p>
+                {% endif %}
+            {% endfor %}
+
+    {%  else %}
+            {{ erros }}
+    {% endif %}
+
+
+</div>

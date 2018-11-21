@@ -1,0 +1,9 @@
+{% extends 'templates/erros/erro.html.twig' %}
+
+{% block mensagem %}
+    <p><b>Erro no acesso</b></p>
+    <p>O endereço que tentou acessar está incorreto ou não existe!<br />Verifique se o endereço foi digitado corretamente. Se estiver correto, esta página<br />não existe mais.</p>
+    <p>Domínio: {{ request.getHeaderLine('host') }}<br />
+        Página: {{ request.requestTarget }}</p>
+    <p>Quaisquer dúvidas entre em contato conosco, <a href="/">suporte@rtdbrasil.org.br</a></p>
+{% endblock %}

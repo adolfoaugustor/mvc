@@ -1,0 +1,30 @@
+{%  extends 'templates/indexs/form-template-dashboard.twig' %}
+
+
+{% block titulo_conteudo %}
+    <a class="fa fa-university"></a>
+    Cadastrar um novo banco para Central
+{% endblock %}
+
+{% block conteudo %}
+
+        {{ parent() }}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var options = {
+            rules:{
+                niBanco:{
+                    required:true
+                },
+            },
+            messages:{
+                niBanco:{
+                    required:"Selecione as instituições referentes"
+                }
+            },
+        };
+      Crud.Save('FormBancoCentral',null,options)
+    </script>
+{% endblock %}

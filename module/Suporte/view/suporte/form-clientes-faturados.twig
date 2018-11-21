@@ -1,0 +1,52 @@
+{%  extends 'templates/indexs/form-template-dashboard.twig' %}
+
+
+{% block titulo_conteudo %}
+    <a class="fa fa-sync-alt"></a>
+    Clientes Faturados
+{% endblock %}
+
+{% block conteudo %}
+
+        {{ parent() }}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var options = {
+            rules:{
+                niBanco:{
+                    required:true,
+                    validarCpfCnpj:true
+                },
+                dataAdesao:{
+                    required:true,
+                },
+                diaFechamentoFatura:{
+                    required:false,
+                    number:true
+                },
+                periodicidadeFatura:{
+                    required:false,
+                    number:true
+                }
+
+            },
+            messages:{
+                niBanco:{
+                    required:"Este documento é requerido"
+                },
+                dataAdesao: {
+                    required:'Data de adesão obrigatória'
+                },
+                diaFechamentoFatura: {
+                    number:"Apenas números"
+                },
+                pediodicidadeFatura:{
+                    number:"Determine a periodicidade do faturamento"
+                }
+            },
+        };
+      Crud.Save($('form').prop('id'),null,options);
+    </script>
+{% endblock %}

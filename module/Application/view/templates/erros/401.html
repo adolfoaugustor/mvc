@@ -1,0 +1,10 @@
+{% extends 'erros/erro.html' %}
+
+{% block mensagem %}
+
+    <p><b>Falha na autorização</b></p>
+    <p>Houve falha na autenticação HTTP, verifique as informações de login.<br /></p>
+    <p>Domínio: {{ request.getHeaderLine('host') }}<br />
+        Página: {{ request.requestTarget }}</p>
+    <p>Quaisquer dúvidas entre em contato conosco, <a href="/contato.php">suporte@rtdbrasil.com.br</a></p>
+{% endblock %}

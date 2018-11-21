@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                {{ titulo_pagina }}
+            </div>
+            <div class="card-body">
+
+                {% if (form.vars.submitted and form.vars.valid)  and erros is empty %}
+                    {% include 'templates/indexs/form-successo.twig' %}
+                {% endif %}
+
+                {%  if erros is not empty %}
+                    {% include 'templates/indexs/form-error.twig' %}
+                {% endif %}
+
+                {% if form %}
+                {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                        <div class="text-right">
+                            <button type="submit" id="submit-formulario" class="btn btn-primary btn-lg">
+                                <i class="fa fa-save"></i>  Salvar
+                            </button>
+                        </div>
+                    {{ form_end(form) }}
+                {%  endif %}
+            </div>
+        </div>
+    </div>
+</div>

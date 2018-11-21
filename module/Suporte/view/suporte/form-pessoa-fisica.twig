@@ -1,0 +1,54 @@
+{%  extends 'templates/indexs/form-template-dashboard.twig' %}
+
+
+{% block titulo_conteudo %}
+    <a class="fa fa-users"></a>
+    Cadastro de Pessoa Física
+{% endblock %}
+
+{% block conteudo %}
+        {{ parent() }}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var options = {
+            rules:{
+                ni:{
+                    required:true,
+                    validarCpfCnpj:true
+                },
+                estado_civil:{
+                    required:true,
+                    validarNome:true
+                },
+                nacionalidade:{
+                    required:true,
+                    validarNome:true
+                },
+                profissao:{
+                    validarNome:true
+                }
+            },
+            messages:{
+                ni:{
+                    required:"Este cpf é requerido"
+                },
+                nacionalidade:{
+                    required:"Por favor selecione a sua Nacionalidade"
+                },
+                pais:{
+                    required:"Por favor selecione o País"
+                },
+                profissao:{
+                    required:"Por favor coloque sua ocupacao / profissão"
+                },
+                estado_civil:{
+                    required:"Por favor selecione o estado civil"
+                }
+            },
+        };
+        Crud.Save('FormPessoaFisica',null,options);
+        Crud.Save('FormUpdatePessoaFisica',null,options);
+        </script>
+{% endblock %}

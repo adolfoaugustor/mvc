@@ -1,0 +1,385 @@
+{%  extends 'templates/indexs/index.twig' %}
+{% block titulo %}Clientes Faturado - Fatura{% endblock %}
+{% block modulo %}Clientes Faturados{% endblock %}
+{% block modulo_titulo %}Detalhes da Fatura{% endblock %}
+{% block conteudo %}
+    {% block styles %}
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
+    {% endblock %}
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal-pedidos">
+        <div class="modal-dialog modal-lg" role="alertdialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-light">
+                    <h5 class="modal-title"><i class="fas fa-cart-arrow-down"></i> Lista de Itens do Pedido <span id="pedido-titulo"></span></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="loading text-center" style="display: none; position: absolute; z-index: 1231231231;">
+                        <p>Carregando, aguarde !</p>
+                        <i class="fas fa-spinner fa-spin fa-3x"></i>
+                    </div>
+
+                    <div class=" table-responsive" style="display: none;" id="table-itens-detalhes">
+                        <button class="btn btn-primary" id="btn-list-detail"><i class="fas fa-arrow-left"></i> Voltar a listagem de pedidos</button>
+                        <table class="table text-center" id="itens">
+                            <thead class="bg-primary text-light">
+                            <tr>
+                                <th>Id</th>
+                                <th>Descrição</th>
+                                <th>Valor</th>
+                            </tr>
+                            </thead>
+                            <tbody id="custo-body">
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class=" table-responsive" id="table-itens">
+                        <table class="table text-center">
+                            <thead class="bg-primary text-light">
+                            <tr>
+                                <th>Id</th>
+                                <th>Protocolo</th>
+                                <th>Descrição do Serviço</th>
+                                <th>Custa Serviço</th>
+                                <th>Custo adicional Pedido</th>
+                            </tr>
+                            </thead>
+                            <tbody id="pedido-body">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    {#<button type="button" class="btn btn-primary">asa</button>#}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal-fatura">
+        <div class="modal-dialog modal-lg" role="alertdialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-light">
+                    <h5 class="modal-title"><i class="fas fa-cart-arrow-down"></i> Fatura</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-fatura-body">
+                    <div class="loading text-center" style="display: none; position: absolute; z-index: 1231231231;">
+                        <p>Carregando, aguarde !</p>
+                        <i class="fas fa-spinner fa-spin fa-3x"></i>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    {#<button type="button" class="btn btn-primary">asa</button>#}
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .loading {
+            width: 100%;
+            height: 100%;
+            color: #063346;
+        }
+    </style>
+    {% if not errors %}
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-light">
+                        <h5><i class="fas fa-filter"></i> Filtro</h5>
+                    </div>
+                    <div class="card-body">
+                        <form action="/suporte/clientes-faturados/{{ ni }}/fatura" method="post">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Selecione um período</span>
+                                </div>
+                                <input type="date" name="start" id="start" class="form-control">
+                                <input type="date" name="end" id="end" class="form-control">
+                                <button id="pedidos-item" type="button" class="btn btn-primary"><i class="fas fa-search-plus"></i> Filtrar</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header bg-primary text-light">
+                                <h5><i class="fa fa-shopping-cart"></i> Pedidos</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="loading text-center" style="display: none; position: absolute; z-index: 1231231231;">
+                                    <p>Carregando, aguarde !</p>
+                                    <i class="fas fa-spinner fa-spin fa-3x"></i>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table text-center">
+                                        <thead>
+                                            <tr>
+                                                <th>Id Pedido</th>
+                                                <th>Data</th>
+                                                <th>Itens Pedido</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="list-itens">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card-footer text-right">
+                                <button class="btn btn-primary btn-lg" id="faturar"><i class="far fa-file-alt"></i> Faturar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-light">
+                        <h5><i class="fa fa-user"></i> Dados de cadastro</h5>
+                    </div>
+                    <div class="card-body">
+                        <h4>Nome: </h4> {{ cliente.getNi().nome }}
+                        <h4>Data adesão: </h4> {{ cliente.getDataAdesao()|date('d/m/Y H:m:s') }}
+                        <h4>Periodicidade Fatura: </h4> {{ cliente.getPeriodicidadeFatura() }}
+                        <h4>Dia Fechamento Fatura: </h4> {{ cliente.getDiaFechamentoFatura() }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <h1 class="text-center text-danger"><i class="fas fa-cart-arrow-down"></i></h1>
+        <h3 class="alert alert-danger text-center">{{ errors }}</h3>
+        <p class="text-center">
+            <a href="/suporte/clientes-faturados">
+                <button class="btn btn-primary"><i class="fas fa-arrow-left"></i> Voltar a listagem anterior</button>
+            </a>
+        </p>
+    {% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+
+    <script>
+            $('#itens').DataTable({
+                language: {
+                    "sEmptyTable": "Nenhum registro encontrado",
+                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "_MENU_ resultados por página",
+                    "sLoadingRecords": "Carregando...",
+                    "sProcessing": "Processando...",
+                    "sZeroRecords": "Nenhum registro encontrado",
+                    "sSearch": "Pesquisar",
+                    "oPaginate": {
+                        "sNext": "Próximo",
+                        "sPrevious": "Anterior",
+                        "sFirst": "Primeiro",
+                        "sLast": "Último"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Ordenar colunas de forma ascendente",
+                        "sSortDescending": ": Ordenar colunas de forma descendente"
+                    }
+                },
+                // dom: 'Bfrtip',
+                // buttons: [
+                //     'copy', 'csv', 'excel', 'pdf', 'print'
+                // ]
+            });
+        // $(document).on('click', '.popover-item', function (event) {
+        //     $(".popover-item").popover({
+        //         trigger: 'hover',
+        //     });
+        // });
+    </script>
+
+    <script>
+
+        $(document).on('click', '#pedidos-item', function (event) {
+
+            event.preventDefault();
+
+            let start = $("#start").val();
+            let end   = $("#end").val();
+            let ni    = '{{ ni }}';
+
+            if (start === '' || end === '') {
+                return;
+            }
+
+            $(".loading").show();
+
+            $.ajax({
+                url: '/suporte/clientes-faturados/buscar-pedidos',
+                type: 'POST',
+                data: {
+                    ni: ni,
+                    start: start,
+                    end: end
+                },
+                success: function (response) {
+                    $(".loading").hide();
+                    $("#list-itens").html("");
+                    for (let i = 0; i < response.data.length; i++) {
+                        $("#list-itens").append("" +
+                            "<tr>"+
+                            "<td>"+response.data[i]['id']+"</td>"+
+                            "<td>"+response.data[i]['data']+"</td>"+
+                            "<td>"+"<a href='#' id='"+response.data[i]['id']+"' class=\"btn btn-sm btn-primary pedido-item\" data-toggle='modal' data-target='#modal-pedidos'><i class=\"fas fa-eye\"></i></a></td>" +
+                            "</tr>"
+                        );
+                    }
+                }
+            });
+        });
+
+        $(document).on('click', '.pedido-item', function() {
+            let id = $(this).attr('id');
+            $(".loading").show();
+            $("#table-itens-detalhes").hide(1000);
+            $("#table-itens").show(1000);
+
+            $.ajax({
+                url: '/suporte/clientes-faturados/buscar-pedidos/itens',
+                type: 'POST',
+                data: {
+                    id: id
+                },
+                success: function (response) {
+                    $(".loading").hide();
+                    $("#pedido-body").html('');
+                    // let ids = [];
+                    for (let i = 0; i < response.data.length; i++) {
+                        // ids.push(response.data[i]['pedidoId']);
+                        $("#pedido-body").append(
+                            '<tr>'
+                                +'<td>'+response.data[i]['id']+'</td>'
+                                +'<td>'+response.data[i]['protocolo']+'</td>'
+                                +'<td>'+response.data[i]['descricao']+'</td>'
+                                +'<td class="text-success" ">R$: '+response.data[i]['valor']+'</td>'
+                                +'<td><button class="btn btn-primary detalhe-item-pedido" data-pedido-item="'+response.data[i]['id']+'" id="'+response.data[i]['pedidoId']+'"><i class="fas fa-eye"></i></button></td>'+
+                            '</tr>'
+                        );
+                    }
+                    // console.log(ids);
+                    // $.each(ids, function (chave, valor) {
+                    //     $.ajax({
+                    //         url: '/suporte/clientes-faturados/buscar-custos/pedidos-itens',
+                    //         type: 'POST',
+                    //         data: {
+                    //             id: valor
+                    //         },
+                    //         success: function (response) {
+                    //             console.log(response)
+                    //         }
+                    //     });
+                    // });
+                }
+            });
+        });
+
+        $(document).on('click', '.detalhe-item-pedido', function () {
+
+            let id = $(this).attr('id');
+            let pedido_item_id = $(this).attr('data-pedido-item');
+
+            $("#table-itens-detalhes").show(1000);
+            $("#table-itens").hide(1000);
+
+            $.ajax({
+                url: '/suporte/clientes-faturados/buscar-custos/pedidos-itens',
+                type: 'POST',
+                data: {
+                    id: id,
+                    pedido_id: pedido_item_id
+                },
+                success: function (response) {
+                    for (let i = 0; i < response.data.length; i++) {
+                        $("#custo-body").html('').append("" +
+                            "<tr>"+
+                            "<td>"+response.data[i]['id']+"</td>"+
+                            "<td>"+response.data[i]['descricao']+"</td>"+
+                            "<td class='text-success'>R$: "+response.data[i]['valor']+"</td>" +
+                            "</tr>"
+                        );
+                    }
+                }
+            });
+
+            $("#table-itens").hide(1000, function () {
+            });
+
+            $("#table-itens-detalhes").show(1000);
+        });
+
+        $(document).on('click', '#btn-list-detail', function (event) {
+           $("#table-itens-detalhes").hide(1000);
+           $("#table-itens").show(1000);
+        });
+
+    </script>
+
+    <script>
+        $(document).on('click', '#faturar', function () {
+
+            let dates = {
+                start: $("#start").val(),
+                end: $("#end").val(),
+                ni: {{ ni }}
+            };
+
+            if (dates.start === '' || dates.end === '') {
+                return;
+            }
+
+            $.ajax({
+                url: '/suporte/clientes-faturados/gerar-fatura',
+                type: 'POST',
+                data: {dates},
+                success: function (response) {
+                    $("#modal-fatura-body").html('').append(
+                        "<div class='embed-responsive embed-responsive-16by9'>"+
+                            "<iframe class='embed-responsive-item' src='data:application/pdf;base64,"+response+"'></iframe>"+
+                        "</div>"
+                    );
+                    $("#modal-fatura").modal();
+                },
+                error: function (response) {
+                    swal({
+                        type: 'info',
+                        title: response.responseJSON.message,
+                        text: response.responseJSON.errors[0]+' '+dates.start+' à '+dates.end,
+                        animation: false,
+                        customClass: 'animated shake'
+                    });
+
+                    return false;
+                }
+            });
+        });
+    </script>
+{% endblock %}
